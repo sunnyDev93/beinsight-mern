@@ -3,7 +3,7 @@ import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import { useDispatch, useSelector } from 'react-redux';
 import { userInfo } from '../../redux/Selectors/selectors';
-import { IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import { IconButton, Menu, MenuItem } from '@mui/material';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 import { logout } from '../../store/auth/action';
@@ -58,13 +58,15 @@ export default function FallbackAvatars() {
       {/* <MenuItem onClick={handleClose}> */}
       <div style={{display: "flex", alignItems: "center", padding: "10px"}}>
         <Avatar alt="User Name" src="/static/images/avatar/1.jpg" />
-        <Typography variant="body1" style={{ marginLeft: '10px' }}>
+        <div style={{ marginLeft: '10px' }}>
             {user?.username}
-        </Typography>
+            <div>
+                {user?.email}
+            </div>
+       </div>
+        
       </div>
-      <Typography variant="body1" style={{ marginLeft: '10px', marginBottom: "10px" }}>
-            {user?.email}
-        </Typography>
+      
       {/* </MenuItem> */}
       <MenuItem onClick={() => { handleClose(); onLogout(); }} sx={{display: "flex", justifyContent: "center"}}>
         Logout
