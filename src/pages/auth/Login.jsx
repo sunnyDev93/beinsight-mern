@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Box,
   Button,
@@ -11,12 +11,21 @@ import {
 } from "@mui/material";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { useMsal } from "@azure/msal-react";
+import { loginRequest } from "../../config/authConfig";
+import { useDispatch } from "react-redux";
+import { setAuth } from "../../store/auth/slice";
+import { useNavigate } from "react-router-dom";
 
 const theme = createTheme();
 
 const Login = () => {
+  const { instance } = useMsal();
   const [email, setEmail] = useState("");
   const [emailError, setEmailError] = useState("");
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,6 +41,7 @@ const Login = () => {
     }
 
     setEmailError("");
+    handleMicrosoftLogin(emailValue);
     console.log({
       email: emailValue,
     });
@@ -40,10 +50,29 @@ const Login = () => {
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
 
-    // Reset the error message when the user starts typing
     if (emailError) {
       setEmailError("");
     }
+  };
+
+  const handleMicrosoftLogin = (email) => {
+    instance.loginPopup({
+      ...loginRequest,
+      loginHint: email,
+    })
+    .then(response => {
+      console.log(response);
+      const accessToken = response.accessToken;
+      const username = response.account.name;
+      // console.log(accessToken);
+      const authData = {token: accessToken, username: username};
+      dispatch(setAuth(authData));
+      navigate("/");
+      
+    })
+    .catch(error => {
+      console.error(error);
+    });
   };
 
   return (
