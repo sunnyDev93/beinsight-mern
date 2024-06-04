@@ -1,10 +1,12 @@
 import { Box, Container } from "@mui/material";
+// eslint-disable-next-line no-unused-vars
 import React from "react";
 import { Slide } from "../../components/Carousel";
 import { menuItems } from "../../constants/menu";
 import { CircleMenu } from "../header/CircleMenu";
 import { LocationMenu } from "../header/LocationMenu";
 import LogoMenu from "../header/LogoMenu";
+import UserMenu from "../header/UserMenu";
 
 const Home = () => {
   const slideItems = [
@@ -20,7 +22,10 @@ const Home = () => {
         minHeight: "100vh",
       }}
     >
-      <LocationMenu />
+      <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
+        <LocationMenu />
+        <UserMenu />
+      </div>
       <LogoMenu />
       <Box
         sx={{

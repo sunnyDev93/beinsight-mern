@@ -1,52 +1,75 @@
 // eslint-disable-next-line no-unused-vars
-import React from 'react'
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import { useDispatch, useSelector } from 'react-redux';
+import { userInfo } from '../../redux/Selectors/selectors';
+import { IconButton, Menu, MenuItem, Typography } from '@mui/material';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import { useNavigate } from 'react-router-dom';
+import { logout } from '../../store/auth/action';
 
-const UserMenu = () => {
+export default function FallbackAvatars() {
+    const user = useSelector(state => userInfo(state));
+    console.log(user);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [anchorEl, setAnchorEl] = React.useState(null);
+    const handleMenu = (event) => {
+        setAnchorEl(event.currentTarget);
+    };
+
+    const handleClose = () => {
+        setAnchorEl(null);
+    };
+    const onLogout = () => {
+        dispatch(logout({ navigate }));
+    };
   return (
-    <aside className="profile-card">
-        <header>
     
-            <a target="_blank" href="#">
-                <img src="http://lorempixel.com/150/150/people/" className="hoverZoomLink" />
-            </a>
-            <h1>
-                John Doe
-            </h1>
-            <h2>
-                Better Visuals
-            </h2>
-        </header>
-        <div className="profile-bio">
-            <p>
-                It takes monumental improvement for us to change how we live our lives. Design is the way we access that improvement.
-            </p>
-        </div>
-
-        <ul className="profile-social-links">
-            <li>
-            <a target="_blank" href="https://www.facebook.com/creativedonut">
-                <i className="fa fa-facebook"></i>
-            </a>
-            </li>
-            <li>
-            <a target="_blank" href="https://twitter.com/dropyourbass">
-                <i className="fa fa-twitter"></i>
-            </a>
-            </li>
-            <li>
-            <a target="_blank" href="https://github.com/vipulsaxena">
-                <i className="fa fa-github"></i>
-            </a>
-            </li>
-            <li>
-            <a target="_blank" href="https://www.behance.net/vipulsaxena">
-            
-                <i className="fa fa-behance"></i>
-            </a>
-            </li>
-        </ul>
-    </aside>
-  )
+    <div>
+    <IconButton
+      edge="end"
+      aria-label="account of current user"
+      aria-controls="menu-appbar"
+      aria-haspopup="true"
+      onClick={handleMenu}
+      color="inherit"
+      sx={{mx: 5,}}
+    >
+      <AccountCircleIcon fontSize='large' sx={{color: "white", mx: 1}} />
+      {/* <span style={{color: "white"}}>Welcome {user?.email}</span> */}
+    </IconButton>
+    <Menu
+      id="menu-appbar"
+      anchorEl={anchorEl}
+      anchorOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      keepMounted
+      transformOrigin={{
+        vertical: 'top',
+        horizontal: 'right',
+      }}
+      open={Boolean(anchorEl)}
+      onClose={handleClose}
+      sx={{mt:5}}
+    >
+      {/* <MenuItem onClick={handleClose}> */}
+      <div style={{display: "flex", alignItems: "center", padding: "10px"}}>
+        <Avatar alt="User Name" src="/static/images/avatar/1.jpg" />
+        <Typography variant="body1" style={{ marginLeft: '10px' }}>
+            {user?.username}
+        </Typography>
+      </div>
+      <Typography variant="body1" style={{ marginLeft: '10px', marginBottom: "10px" }}>
+            {user?.email}
+        </Typography>
+      {/* </MenuItem> */}
+      <MenuItem onClick={() => { handleClose(); onLogout(); }} sx={{display: "flex", justifyContent: "center"}}>
+        Logout
+      </MenuItem>
+    </Menu>
+  </div>
+  );
 }
-
-export default UserMenu

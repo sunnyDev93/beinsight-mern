@@ -1,5 +1,4 @@
 import { toast } from "react-toastify";
-import { startSession } from "../../storage/session";
 import {
   clearAuth,
   setAuth,
@@ -30,7 +29,6 @@ export const handleLogin = (userInfo) => async (dispatch) => {
     console.log("access", data.accessToken);
     const token = data.accessToken;
     if (token) {
-      startSession(token);
       window.location.href = "/";
     }
     dispatch(setAuth({ token }));
@@ -44,7 +42,7 @@ export const logout =
   async (dispatch) => {
     dispatch(clearAuth());
     navigate("/login");
-  };
+};
 export const modalLogout = () => async (dispatch) => {
   dispatch(clearAuth());
 };

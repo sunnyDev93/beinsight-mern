@@ -63,9 +63,9 @@ const Login = () => {
     .then(response => {
       console.log(response);
       const accessToken = response.accessToken;
-      const username = response.account.name;
-      // console.log(accessToken);
-      const authData = {token: accessToken, username: username};
+      const user = {email: response.account.username, username: response.account.name};
+      console.log(user);
+      const authData = {token: accessToken, user: user};
       dispatch(setAuth(authData));
       navigate("/");
       
