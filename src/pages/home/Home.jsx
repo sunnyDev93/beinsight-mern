@@ -19,7 +19,7 @@ const Home = () => {
       style={{
         background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
         padding: "10px",
-        minHeight: "100vh",
+        minHeight: "100%",
       }}
     >
       <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
@@ -34,7 +34,7 @@ const Home = () => {
           marginRight: "auto",
           display: "flex",
           justifyContent: "center",
-          marginTop: "-100px",
+          marginTop: "0px",
         }}
       >
         {menuItems.map((menuItem) => (
