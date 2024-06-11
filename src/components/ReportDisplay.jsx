@@ -9,7 +9,7 @@ import { LocationMenu } from "../pages/header/LocationMenu";
 const ReportDisplay = (props) => {
   return (
     <Box sx={{background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",}}>
-      <div style={{height: "100vh"}}>
+      <div style={{height: "100%"}}>
         <div style={{display: "flex", alignItems: "center"}}>
           <LogoMenu />
           <LocationMenu />
@@ -17,8 +17,8 @@ const ReportDisplay = (props) => {
         <Container>  
           <iframe
             title="test"
-            width="1140"
-            height="700"
+            width="1200"
+            height="800"
             // eslint-disable-next-line react/prop-types
             src={props.reportUrl}
             frameBorder="0"

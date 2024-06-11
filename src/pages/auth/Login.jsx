@@ -124,7 +124,7 @@ const Login = () => {
               justifyContent: "center",
               position: "absolute",
               left: "50%",
-              top: "25%",
+              top: "19%",
               transform: "translate(-50%, 6%)",
             }}
           >

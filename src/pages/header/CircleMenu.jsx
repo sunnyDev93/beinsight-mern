@@ -96,6 +96,7 @@ export const CircleMenu = ({ label, icon, submenuItems }) => {
           >
             <Link
               to={item.menuLink}
+              target="_blank"
               style={{
                 marginLeft: "auto",
                 marginRight: "auto",
