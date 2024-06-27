@@ -14,17 +14,21 @@ const ReportDisplay = (props) => {
           <LogoMenu />
           <LocationMenu />
         </div>
-        <Container>  
+        <div style={{display: "flex", justifyContent: "center", marginTop: "20px"}}>
           <iframe
             title="test"
-            width="1200"
-            height="800"
+            width="1500"
+            height="1000"
             // eslint-disable-next-line react/prop-types
             src={props.reportUrl}
             frameBorder="0"
             allowFullScreen={true}
+            style={{
+              width: "100%",
+              height: "100vh",
+            }}
           ></iframe>
-        </Container>
+        </div>
       </div>
       
     </Box>
