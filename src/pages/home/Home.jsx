@@ -19,7 +19,7 @@ const Home = () => {
       style={{
         background: "linear-gradient(to right, #0f2027, #203a43, #2c5364)",
         padding: "10px",
-        minHeight: "100%",
+        minHeight: "100vh",
       }}
     >
       <div style={{display: "flex", alignItems: "center", justifyContent: "space-between"}}>
@@ -33,7 +33,7 @@ const Home = () => {
           marginLeft: "auto",
           marginRight: "auto",
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "space-evenly",
           marginTop: "0px",
         }}
       >
@@ -46,9 +46,6 @@ const Home = () => {
           />
         ))}
       </Box>
-      <Container>
-        <Slide slideItems={slideItems} />
-      </Container>
     </div>
   );
 };
