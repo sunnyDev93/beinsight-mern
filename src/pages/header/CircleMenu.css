@@ -1,0 +1,66 @@
+.circle-menu-container {
+    margin-right: 20px;
+}
+.circle-menu {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .circle-menu:hover {
+    transform: scale(1.2);
+  }
+  
+  .circle-menu-icon {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .circle-menu-icon img {
+    width: 80px;
+    height: 80px;
+  }
+  
+  .circle-menu-icon span {
+    margin-top: 10px;
+    font-size: 20px;
+    color: black;
+  }
+  
+  .circle-menu-submenu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    z-index: 100;
+  }
+  .circle-menu-submenu:hover {
+    border-radius: 5px;
+  }
+  
+  .circle-menu-item {
+    display: block;
+    padding: 10px 20px;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    padding: 20px 30px;
+    /* width:; */
+  }
+  
+  .circle-menu-item:hover {
+    background-color: #f0f0f0;
+    border-radius: 5px;
+  }
